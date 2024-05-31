@@ -1,5 +1,5 @@
 // Importo la classe Event
-const eventModel = require("../models/events.js");
+const eventModel = require("../models/event.js");
 
 // Index
 const index = (req, res) => {
