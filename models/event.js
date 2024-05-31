@@ -17,6 +17,7 @@ class Event {
         this.maxSeats = maxSeats;
     }
 
+    // Funzione per generare un ID univoco
     generateId() {
         const id = crypto.randomUUID();
         return id;
