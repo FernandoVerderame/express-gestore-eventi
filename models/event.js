@@ -62,7 +62,7 @@ class Event {
 
         const eventsTitles = events.reduce((arr, event) => {
             if (event.title === title) {
-                arr.push(event)
+                arr.push(event);
             };
             return arr;
         }, []);
@@ -73,6 +73,39 @@ class Event {
         }
 
         return eventsTitles;
+    }
+
+    // Funzione per le prenotazioni
+    static getReservations(title) {
+
+        // Lettura degli eventi
+        const events = this.readJSON();
+
+        // Filtraggio degli eventi per titolo
+        const eventsTitles = events.reduce((arr, event) => {
+            if (event.title === title) {
+                arr.push(event);
+            };
+            return arr;
+        }, []);
+
+        // Lettura delle prenotazioni
+        const filePath = path.join(__dirname, "../db/reservations.json");
+        const fileData = fs.readFileSync(filePath);
+        const reservations = JSON.parse(fileData);
+
+        // Recupero degli ID degli eventi con il titolo specificato
+        const eventsId = eventsTitles.map(e => e.id);
+
+        // Filtraggio delle prenotazioni per gli eventi corrispondenti
+        const reservationEvents = reservations.reduce((arr, res) => {
+            if (eventsId.includes(res.eventId)) {
+                arr.push(res);
+            };
+            return arr;
+        }, []);
+
+        return reservationEvents;
     }
 }
 
