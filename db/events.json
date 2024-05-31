@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "id": 1,
+        "title": "Concerto di Musica Classica",
+        "description": "Un'esperienza indimenticabile con i migliori compositori classici.",
+        "date": "2024-06-10",
+        "maxSeats": 150
+    },
+    {
+        "id": 2,
+        "title": "Fiera del Libro",
+        "description": "Un evento imperdibile per tutti gli amanti della lettura e della cultura.",
+        "date": "2024-07-15",
+        "maxSeats": 300
+    },
+    {
+        "id": 3,
+        "title": "Festival del Cinema",
+        "description": "Proiezioni dei migliori film dell'anno con la presenza di registi e attori.",
+        "date": "2024-08-20",
+        "maxSeats": 200
+    }
+]
