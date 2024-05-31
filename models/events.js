@@ -43,10 +43,24 @@ class Event {
         this.writeJSON(events);
     }
 
-    // Funzione per filtrare per id
+    // Funzione per filtrare per ID
     static getEventId(id) {
         const events = this.readJSON();
         return events.find(singleEvent => singleEvent.id === id);
+    }
+
+    // Funzione per filtrare per Title
+    static getEventTitle(title) {
+        const events = this.readJSON();
+
+        const eventsTitles = events.reduce((arr, event) => {
+            if (event.title === title) {
+                arr.push(event)
+            };
+            return arr;
+        }, []);
+
+        return eventsTitles;
     }
 }
 
