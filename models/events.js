@@ -46,7 +46,13 @@ class Event {
     // Funzione per filtrare per ID
     static getEventId(id) {
         const events = this.readJSON();
-        return events.find(singleEvent => singleEvent.id === id);
+        const eventFilter = events.find(singleEvent => singleEvent.id === id);
+
+        // Mando un errore 404 
+        if (!eventFilter) {
+            throw new Error(`Non esiste un evento con questo ID: ${id}`);
+        }
+        return eventFilter;
     }
 
     // Funzione per filtrare per Title
@@ -59,6 +65,11 @@ class Event {
             };
             return arr;
         }, []);
+
+        // Mando un errore 404 
+        if (eventsTitles.length < 1) {
+            throw new Error(`Non esiste un evento con questo Title: ${title}`);
+        }
 
         return eventsTitles;
     }
