@@ -16,5 +16,14 @@ router.post("/", eventsControllers.store);
 // Rotta Update
 router.put("/:event", eventsControllers.update);
 
+// Rotta Index prenotazioni
+router.get("/:event/reservations", index);
+
+// Rotta Store prenotazioni
+router.post("/:event/reservations", store);
+
+// Rotta Destroy prenotazioni
+router.delete("/:event/reservations/:reservation", destroy);
+
 // Esporto l'istanza di router
 module.exports = router;
