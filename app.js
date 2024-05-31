@@ -14,6 +14,9 @@ const host = process.env.HOST || "localhost";
 // Router degli eventi
 const eventsRouter = require("./routers/events.js");
 
+const notFound = require("./middlewares/notFound.js");
+const errorHandler = require("./middlewares/errorHandler.js");
+
 // Indico ad express che esistono nuove rotte per gli eventi
 app.use('/events', eventsRouter);
 
@@ -22,6 +25,9 @@ app.get('/', (req, res) => {
     const filePath = path.join(__dirname, './welcome.html');
     res.sendFile(filePath);
 });
+
+app.use(notFound);
+app.use(errorHandler);
 
 // Avvio il server
 app.listen(port, host, () => {
