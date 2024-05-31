@@ -50,9 +50,7 @@ class Event {
 
         // Mando un errore 404 
         if (!eventFilter) {
-            const error = new Error(`Non esiste un evento con questo ID: ${id}`);
-            error.status = 404;
-            throw error;
+            throw new Error(`Non esiste un evento con questo ID: ${id}`);
         }
         return eventFilter;
     }
@@ -69,10 +67,8 @@ class Event {
         }, []);
 
         // Mando un errore 404 
-        if (eventsTitles.length === 0) {
-            const error = new Error(`Non esiste un evento con questo Title: ${title}.`);
-            error.status = 404;
-            throw error;
+        if (eventsTitles.length < 1) {
+            throw new Error(`Non esiste un evento con questo Title: ${title}`);
         }
 
         return eventsTitles;
